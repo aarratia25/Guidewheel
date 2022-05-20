@@ -2,17 +2,19 @@
 
 Install the dependencies and start the server.
 
-sh
+```sh
 git clone https://github.com/aarratia25/Guidewheel.git
 cd Guidewheel
 Download file demoPumpDayData.csv
 npm i
 npm run serve
+```
 
 ## Server
 
-sh
+```sh
 Open http://localhost:8080
+```
 
 Upload:
 
