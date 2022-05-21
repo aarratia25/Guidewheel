@@ -43,9 +43,8 @@
               class="mb-3"
             />
             <div
-              v-for="(tr, index) in countData"
-              :key="tr.device"
-              :class="index < countData.length - 1 ? 'mb-1' : ''"
+              v-for="(tr, index) in countDataOrder"
+              :key="index"
               class="
                 w-full
                 flex
@@ -55,6 +54,7 @@
                 py-1
                 px-4
                 my-2
+                mb-1
               "
             >
               <span>{{ tr.state }}</span>
@@ -214,6 +214,11 @@ export default {
         ],
       };
     },
+    countDataOrder() {
+      return this.countData.sort((a, b) => {
+        return b.value - a.value;
+      });
+    },
   },
   methods: {
     handleFileUpload(e) {
@@ -294,7 +299,7 @@ export default {
     },
     formatDate(unix_timestamp) {
       const date = new Date(parseInt(unix_timestamp));
-      if(typeof(unix_timestamp) !== 'undefined'){   
+      if (typeof unix_timestamp !== "undefined") {
         const day = date.getDate();
         const month = date.getMonth() + 1;
         const year = date.getFullYear();
@@ -305,7 +310,7 @@ export default {
       } else {
         return "";
       }
-    }
+    },
   },
 };
 </script>
