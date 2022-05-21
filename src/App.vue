@@ -293,15 +293,19 @@ export default {
       }
     },
     formatDate(unix_timestamp) {
-      const date = new Date(unix_timestamp * 1000);
-      const day = date.getDate();
-      const month = date.getMonth() + 1;
-      const year = date.getFullYear();
-      const hours = date.getHours();
-      const minutes = "0" + date.getMinutes();
-      const formattedTime = hours + ":" + minutes.substr(-2);
-      return day + "/" + month + "/" + year + " " + formattedTime;
-    },
+      const date = new Date(parseInt(unix_timestamp));
+      if(typeof(unix_timestamp) !== 'undefined'){   
+        const day = date.getDate();
+        const month = date.getMonth() + 1;
+        const year = date.getFullYear();
+        const hours = date.getHours();
+        const minutes = "0" + date.getMinutes();
+        const formattedTime = hours + ":" + minutes.substr(-2);
+        return day + "/" + month + "/" + year + " " + formattedTime;
+      } else {
+        return "";
+      }
+    }
   },
 };
 </script>
